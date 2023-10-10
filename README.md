@@ -3,7 +3,7 @@ Vue をあれこれテストしたいがためのリポジトリ
 
 ---
 
-Apache を起動して、そのうえで実行してもビルドしてない方は動かないので調査しなくてはいけない
+Apache を起動して、そのうえで実行して確認する
 
 Apache は、回答したら httpd.conf を以下のように直す
 
@@ -21,3 +21,5 @@ DocumentRoot "D:/program_src/javascript/vue-test"
 httpd.exe を叩いて起動し、 `http://localhost/src_create_vue/vue-project/dist/` にアクセスすると、画像は出ないがそれ以外は動いている
 
 上記URLを閲覧するためには `npm run build` が必要なので、忘れずに
+
+ビルド不要な方は、 `DOMContentLoaded` に紐づけるか、あるいはスクリプトの読み込みを body タグの最後に置かないといけない
