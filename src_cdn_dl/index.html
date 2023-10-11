@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="js/vue.global.prod.js" defer></script>
-  <script src="js/index.js" defer></script>
+  <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="css/index.css">
+  <script defer src="js/vue.global.prod.js"></script>
+  <script defer src="js/index.js"></script>
 </head>
+
 <body>
+  <header>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo">TEST</a>
+          <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="sass.html">Test1</a></li>
+            <li><a href="badges.html">Test2</a></li>
+            <li><a href="collapsible.html">Test3</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <ul class="sidenav" id="mobile-menu">
+      <li><a href="sass.html">Test1</a></li>
+      <li><a href="badges.html">Test2</a></li>
+      <li><a href="collapsible.html">Test3</a></li>
+    </ul>
+  </header>
   <main>
     <h1>Hello, World!</h1>
     <div id="app">
@@ -15,5 +46,9 @@
       <p>Count is: {{ counter.count }}</p>
     </div>
   </main>
+  <footer>
+    &copy; copylight landwarrior
+  </footer>
 </body>
+
 </html>

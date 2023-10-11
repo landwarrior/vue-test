@@ -1,6 +1,12 @@
-import "./assets/main.css";
-
 import { createApp } from "vue";
-import App from "./App.vue";
 
-createApp(App).mount("#app");
+createApp({
+  data() {
+    return {
+      message: "Hello, World!",
+      counter: {
+        count: 0,
+      },
+    };
+  },
+}).mount("#app");

@@ -42,9 +42,14 @@ DocumentRoot "D:/program_src/javascript/vue-test"
 2. カレントディレクトリが `vue-project` になっていることを確認し、 `npm run build` を実行する
 3. `vue-project` 配下に `dist` というフォルダが作成され、その中にビルドしたファイルが入っている
 
-### 2. ブラウザで確認する
+### 2. パスを変更する
 
-`http://localhost/src_create_vue/vue-project/dist/` にアクセスすると、画像は出ないがそれ以外は動いている
+ビルドすると、 `dist` 配下にある `index.html` 内の `assets` 配下のパスが絶対パスになっているため、先頭に `.` をつけて相対パスに変更する  
+CSS はうまくいくが、 JavaScript はダメみたい
+
+### 3. ブラウザで確認する
+
+`http://localhost/src_create_vue/vue-project/dist/` にアクセスすると、今は動いていない（ビルドがおかしい）
 
 ## ビルドなしの確認方法
 
