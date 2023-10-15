@@ -7,8 +7,10 @@ body {
 
 main {
     padding: 1vh 3vw;
-    min-height: 100vh;
     box-sizing: border-box;
     background-color: #eee;
     font-size: 20px;
+}
+footer {
+    text-align: center;
 }

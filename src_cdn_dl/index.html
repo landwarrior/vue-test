@@ -15,40 +15,69 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link rel="stylesheet" href="css/index.css">
   <script defer src="js/vue.global.prod.js"></script>
-  <script defer src="js/index.js"></script>
+  <!-- type="module" をつけないと、中で import が使えない -->
+  <script defer type="module" src="js/index.js"></script>
 </head>
 
 <body>
-  <header>
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <a href="/" class="brand-logo">TEST</a>
-          <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="sass.html">Test1</a></li>
-            <li><a href="badges.html">Test2</a></li>
-            <li><a href="collapsible.html">Test3</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <ul class="sidenav" id="mobile-menu">
-      <li><a href="sass.html">Test1</a></li>
-      <li><a href="badges.html">Test2</a></li>
-      <li><a href="collapsible.html">Test3</a></li>
-    </ul>
-  </header>
+  <div id="header">
+    <header-comp :headertitle="title" :menu1="menu1" :menu2="menu2" :menu3="menu3" @response="(msg) => childMsg = msg"></header-comp>
+    <p>{{ childMsg }}</p>
+  </div>
   <main>
-    <h1>Hello, World!</h1>
     <div id="app">
-      <h1>{{ message }}</h1>
-      <p>Count is: {{ counter.count }}</p>
+      <h1 :class="titleClass">{{ title }}</h1>
+      <div class="contents">
+        <div class="input-field">
+          <input type="text" v-model="text">
+          <label>input here</label>
+        </div>
+        <p>{{ text }}</p>
+        <p v-if="text">入力されたら表示される</p>
+        <p v-else>テキストボックスに文字を入力してください</p>
+      </div>
+      <div class="contents">
+        <button type="button" @click="increment" class="waves-effect waves-light btn">click</button>
+        <p>Count is: {{ counter.count }}</p>
+      </div>
+      <div class="contents">
+        <form @submit.prevent="addTodo">
+          <div class="input-field">
+            <input type="text" v-model="newTodo">
+            <label>todo</label>
+          </div>
+          <button type="submit" class="waves-effect waves-light btn">Add Todo</button>
+        </form>
+        <ul>
+          <li v-for="todo in filteredTodos" :key="todo.id">
+            <label>
+              <input type="checkbox" v-model="todo.done">
+              <span :class="{ done: todo.done }">{{ todo.id }}: {{ todo.text }} {{ todo.done }}</span>
+            </label>
+            &nbsp;<button @click="removeTodo(todo)" class="waves-effect waves-light btn-floating btn-small">X</button>
+          </li>
+        </ul>
+        <button @click="hideCompleted = !hideCompleted" class="waves-effect waves-light btn">
+          {{ hideCompleted ? 'Show all' : 'Hide computed' }}
+        </button>
+      </div>
+      <div class="contents">
+        <p ref="pElementRef">hello</p>
+      </div>
+      <div class="contents">
+        <p>Todo id: {{ todoId }}</p>
+        <button @click="todoId++" class="waves-effect waves-light btn">Fetch next todo</button>
+        <p v-if="!todoData">Loading...</p>
+        <pre v-else>{{ todoData }}</pre>
+      </div>
+      <div class="contents">
+        <child-comp></child-comp>
+      </div>
     </div>
   </main>
-  <footer>
-    &copy; copylight landwarrior
-  </footer>
+  <div id="footer">
+    <footer-comp></footer-comp>
+  </div>
 </body>
 
 </html>
