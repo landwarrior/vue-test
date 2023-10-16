@@ -56,10 +56,49 @@ document.addEventListener("DOMContentLoaded", () => {
         this.fetchData();
       }
     },
+  }).mount("#app");
+
+  Vue.createApp({
+    data() {
+      // コンポーネントで使用するプロパティと、ここで使用するプロパティを定義する
+      return {
+        todos: null,
+        todoId: null,
+      }
+    },
+    methods: {
+      // メソッドを定義する
+      async fetchData() {
+        this.todos = null;
+        if (!this.todoId) {
+          const res = await fetch(`https://jsonplaceholder.typicode.com/todos`);
+          this.todos = await res.json();
+        } else {
+          const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${this.todoId}`);
+          if (res.ok) {
+            this.todos = [];
+            this.todos.push(await res.json());
+          } else {
+            this.todos = [];
+          }
+        }
+      }
+    },
+    watch: {
+      todoId() {
+        // todoId に変更があったらメソッドを実行する
+        this.fetchData();
+      }
+    },
+    mounted() {
+      // マウントされたら（初期表示時に）メソッドを実行する
+      this.fetchData();
+    },
+    // 使用するコンポーネントを指定する
     components: {
       ChildComp
     },
-  }).mount("#app");
+  }).mount('#app2');
 
   Vue.createApp({
     components: {

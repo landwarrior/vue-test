@@ -70,8 +70,14 @@
         <p v-if="!todoData">Loading...</p>
         <pre v-else>{{ todoData }}</pre>
       </div>
+    </div>
+    <div id="app2">
       <div class="contents">
-        <child-comp></child-comp>
+        <div class="input-field">
+          <input type="text" v-model="todoId">
+          <label>todoId</label>
+        </div>
+        <child-comp :todos="todos"></child-comp>
       </div>
     </div>
   </main>
