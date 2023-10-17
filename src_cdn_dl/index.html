@@ -20,12 +20,12 @@
 </head>
 
 <body>
-  <div id="header">
+  <div id="header" v-cloak>
     <header-comp :headertitle="title" :menu1="menu1" :menu2="menu2" :menu3="menu3" @response="(msg) => childMsg = msg"></header-comp>
     <p>{{ childMsg }}</p>
   </div>
   <main>
-    <div id="app">
+    <div id="app" v-cloak>
       <h1 :class="titleClass">{{ title }}</h1>
       <div class="contents">
         <div class="input-field">
@@ -71,7 +71,7 @@
         <pre v-else>{{ todoData }}</pre>
       </div>
     </div>
-    <div id="app2">
+    <div id="app2" v-cloak>
       <div class="contents">
         <div class="input-field">
           <input type="text" v-model="todoId">
@@ -81,7 +81,7 @@
       </div>
     </div>
   </main>
-  <div id="footer">
+  <div id="footer" v-cloak>
     <footer-comp></footer-comp>
   </div>
 </body>
