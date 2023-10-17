@@ -1,14 +1,6 @@
-import { createApp } from "vue";
+import './assets/main.css'
 
-document.addEventListener('DOMContentLoaded', () => {
-  createApp({
-    data() {
-      return {
-        message: "Hello, World!",
-        counter: {
-          count: 0,
-        },
-      };
-    },
-  }).mount("#app");
-});
+import { createApp } from 'vue'
+import App from './App.vue'
+
+createApp(App).mount('#app')
